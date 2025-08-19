@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDepartmentRequest extends FormRequest
+class UpdateEmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,10 @@ class UpdateDepartmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'sometimes|required|string|max:255|unique:departments,name,' . $this->department->id,
-            'status' => 'sometimes|in:active,inactive',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:employees,email,' . $this->employee->id,
+            'department_id' => 'required|exists:departments,id',
+            'status' => 'required|in:active,inactive'
         ];
     }
 

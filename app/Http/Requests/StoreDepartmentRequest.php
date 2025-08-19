@@ -26,4 +26,11 @@ class StoreDepartmentRequest extends FormRequest
             'status' => 'in:active,inactive',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'status.in' => 'Status must be either active or inactive.'
+        ];
+    }
 }
