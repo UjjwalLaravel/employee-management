@@ -14,7 +14,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::with('department')->get();
+        $employees = Employee::with(['department', 'addresses', 'contacts'])->get();
         if(count($employees) == 0){
            return response()->json([
                 'success' => true,
@@ -48,7 +48,7 @@ class EmployeesController extends Controller
      */
     public function show(Employee $employee)
     {
-        $employee->load('department');
+        $employee->load(['department', 'addresses', 'contacts']);
 
         return response()->json([
             'success' => true,

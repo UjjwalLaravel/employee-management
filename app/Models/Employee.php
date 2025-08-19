@@ -11,4 +11,12 @@ class Employee extends Model
     public function department(){
         return $this->belongsTo(Department::class);
     }
+
+    public function addresses(){
+        return $this->hasMany(Address::class);
+    }
+    
+    public function contacts(){
+        return $this->hasMany(Contact::class);
+    }
 }
