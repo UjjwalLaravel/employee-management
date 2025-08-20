@@ -51,8 +51,6 @@ class DepartmentsController extends Controller
         // since we have used on delete cascade foreign key contraint, this will delete all the employees belongs to this department. so there should be cofirmation from FE if user want to delete all the emplyees as well.
         $department->delete();
 
-        return response()->json([
-            'message' => 'Department deleted successfully.'
-        ]);
+        return response()->json(['success' => true, 'message' => 'Department deleted successfully']);
     }
 }
