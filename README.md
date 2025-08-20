@@ -42,7 +42,7 @@ A RESTful API built for managing employees, departments, addresses, and contacts
     composer install
     ```
 
-3. **Copy `.env` file**
+3. **Copy `.env` file and generate application key**
 
 	*Linux / macOS*
     ```bash
@@ -51,6 +51,7 @@ A RESTful API built for managing employees, departments, addresses, and contacts
 	*Windows CMD*
     ```bash
     copy .env.example .env
+    php artisan key:generate
    ```
 
    
