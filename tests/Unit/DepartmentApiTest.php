@@ -10,8 +10,7 @@ class DepartmentApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function it_can_create_a_department()
+    public function test_it_can_create_a_department()
     {
         $payload = [
             'name' => 'HR',
@@ -29,8 +28,7 @@ class DepartmentApiTest extends TestCase
         $this->assertDatabaseHas('departments', ['name' => 'HR']);
     }
 
-    /** @test */
-    public function it_can_update_a_department()
+    public function test_it_can_update_a_department()
     {
         $department = Department::factory()->create();
 
@@ -44,8 +42,7 @@ class DepartmentApiTest extends TestCase
         $this->assertDatabaseHas('departments', ['name' => 'Finance']);
     }
 
-    /** @test */
-    public function it_can_delete_a_department()
+    public function test_it_can_delete_a_department()
     {
         $department = Department::factory()->create();
 
@@ -57,8 +54,7 @@ class DepartmentApiTest extends TestCase
         $this->assertDatabaseMissing('departments', ['id' => $department->id]);
     }
 
-    /** @test */
-    public function it_can_list_departments()
+    public function test_it_can_list_departments()
     {
         Department::factory()->count(3)->create();
 

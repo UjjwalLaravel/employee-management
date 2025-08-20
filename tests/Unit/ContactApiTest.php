@@ -11,8 +11,7 @@ class ContactApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function it_can_create_contact_for_employee()
+    public function test_it_can_create_contact_for_employee()
     {
         $employee = Employee::factory()->create();
 
@@ -29,8 +28,7 @@ class ContactApiTest extends TestCase
         $this->assertDatabaseHas('contacts', ['phone_number' => '9876543210']);
     }
 
-    /** @test */
-    public function it_can_update_contact_for_employee()
+    public function test_it_can_update_contact_for_employee()
     {
         $employee = Employee::factory()->create();
         $contact = Contact::factory()->create(['employee_id' => $employee->id]);
@@ -45,8 +43,7 @@ class ContactApiTest extends TestCase
         $this->assertDatabaseHas('contacts', ['phone_number' => '1234567890']);
     }
 
-    /** @test */
-    public function it_can_delete_contact_for_employee()
+    public function test_it_can_delete_contact_for_employee()
     {
         $employee = Employee::factory()->create();
         $contact = Contact::factory()->create(['employee_id' => $employee->id]);
@@ -59,8 +56,7 @@ class ContactApiTest extends TestCase
         $this->assertDatabaseMissing('contacts', ['id' => $contact->id]);
     }
 
-    /** @test */
-    public function it_can_list_all_contacts_of_employee()
+    public function test_it_can_list_all_contacts_of_employee()
     {
         $employee = Employee::factory()->create();
         Contact::factory()->count(3)->create(['employee_id' => $employee->id]);

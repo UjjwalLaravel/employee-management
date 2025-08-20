@@ -11,8 +11,7 @@ class EmployeeApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function it_can_create_employee_with_addresses_and_contacts()
+    public function test_it_can_create_employee_with_addresses_and_contacts()
     {
         $department = Department::factory()->create();
 

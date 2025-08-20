@@ -12,8 +12,7 @@ class AddressApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function it_can_create_address_for_employee()
+    public function test_it_can_create_address_for_employee()
     {
         $employee = Employee::factory()->create();
 
@@ -34,8 +33,7 @@ class AddressApiTest extends TestCase
         $this->assertDatabaseHas('addresses', ['address_line1' => '123 Street']);
     }
 
-    /** @test */
-    public function it_can_update_address_for_employee()
+    public function test_it_can_update_address_for_employee()
     {
         $employee = Employee::factory()->create();
         $address = Address::factory()->create(['employee_id' => $employee->id]);
@@ -50,8 +48,7 @@ class AddressApiTest extends TestCase
         $this->assertDatabaseHas('addresses', ['address_line1' => '456 New Street']);
     }
 
-    /** @test */
-    public function it_can_delete_address_for_employee()
+    public function test_it_can_delete_address_for_employee()
     {
         $employee = Employee::factory()->create();
         $address = Address::factory()->create(['employee_id' => $employee->id]);
@@ -64,8 +61,7 @@ class AddressApiTest extends TestCase
         $this->assertDatabaseMissing('addresses', ['id' => $address->id]);
     }
 
-    /** @test */
-    public function it_can_list_all_addresses_of_employee()
+    public function test_it_can_list_all_addresses_of_employee()
     {
         $employee = Employee::factory()->create();
         Address::factory()->count(3)->create(['employee_id' => $employee->id]);
