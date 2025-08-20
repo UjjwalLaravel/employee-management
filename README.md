@@ -1,61 +1,140 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Employee Management API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A RESTful API built with **Laravel 12** for managing employees, departments, addresses, and contacts.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✅ Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- CRUD for **Departments**
+- CRUD for **Employees**
+- CRUD for **Addresses**
+- CRUD for **Contacts**
+- Search employees by:
+  - Name, Email, Department, Contact Number
+- Validation & Exception Handling
+- Nested creation: Add **addresses & contacts** while creating an employee
+- Postman Collection available for testing
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 💻 Setup Instructions
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Clone the repository**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    ```bash
+    git clone https://github.com/UjjwalLaravel/employee-management.git
+    cd employee-management
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **Install dependencies**
 
-## Laravel Sponsors
+    ```bash
+    composer install
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Copy `.env` file**
 
-### Premium Partners
+    ```bash
+    cp .env.example .env
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+4. **Configure database** in `.env`
 
-## Contributing
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=employee-management
+    DB_USERNAME=root
+    DB_PASSWORD=secret
+    ```
+5. **Create a new database** ```employee-management```
+5. **Run migrations**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    php artisan migrate
+    ```
 
-## Code of Conduct
+6. **Serve the application**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+    php artisan serve
+    ```
 
-## Security Vulnerabilities
+Base URL: `http://127.0.0.1:8000/api`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 📦 API Endpoints
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Departments
+
+| Method | Endpoint               | Description                  |
+|--------|------------------------|------------------------------|
+| GET    | `/departments`         | List all departments         |
+| POST   | `/departments`         | Create a new department      |
+| GET    | `/departments/{id}`    | Get a single department      |
+| PUT    | `/departments/{id}`    | Update a department          |
+| DELETE | `/departments/{id}`    | Delete a department          |
+
+---
+
+### Employees
+
+| Method | Endpoint               | Description                                  |
+|--------|------------------------|----------------------------------------------|
+| GET    | `/employees`           | List all employees                            |
+| POST   | `/employees`           | Create an employee with addresses & contacts |
+| GET    | `/employees/{id}`      | Get a single employee                         |
+| PUT    | `/employees/{id}`      | Update an employee                            |
+| DELETE | `/employees/{id}`      | Delete an employee                            |
+| GET    | `/employees/search`    | Search employees by name, email, department, or contact |
+
+**Example Search Query:**
+
+GET /api/employees/search?name=John&department=HR&phone=9876543210
+
+
+---
+
+### Addresses
+
+Addresses are always tied to a specific employee.
+
+| Method | Endpoint                                         | Description                        |
+|--------|-------------------------------------------------|------------------------------------|
+| GET    | `/employees/{employee_id}/addresses`           | List all addresses of an employee  |
+| POST   | `/employees/{employee_id}/addresses`           | Add a new address for the employee |
+| GET    | `/employees/{employee_id}/addresses/{id}`      | Get a single address of an employee|
+| PUT    | `/employees/{employee_id}/addresses/{id}`      | Update an employee's address       |
+| DELETE | `/employees/{employee_id}/addresses/{id}`      | Delete an employee's address       |
+
+---
+
+### Contacts
+
+Contacts are always tied to a specific employee.
+
+| Method | Endpoint                                         | Description                        |
+|--------|-------------------------------------------------|------------------------------------|
+| GET    | `/employees/{employee_id}/contacts`            | List all contacts of an employee   |
+| POST   | `/employees/{employee_id}/contacts`            | Add a new contact for the employee |
+| GET    | `/employees/{employee_id}/contacts/{id}`       | Get a single contact of an employee|
+| PUT    | `/employees/{employee_id}/contacts/{id}`       | Update an employee's contact       |
+| DELETE | `/employees/{employee_id}/contacts/{id}`       | Delete an employee's contact       |
+
+---
+
+## 📂 Postman Collection
+
+Import the `Company Employee Management.postman_collection.json` to test all endpoints quickly.
+
+---
+
+## 🧪 Testing
+
+Run unit tests:
+
+```bash
+php artisan test
