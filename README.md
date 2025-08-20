@@ -1,6 +1,6 @@
 # Employee Management API
 
-A RESTful API built with **Laravel 12** for managing employees, departments, addresses, and contacts.
+A RESTful API built for managing employees, departments, addresses, and contacts.
 
 ---
 
@@ -66,7 +66,7 @@ Base URL: `http://127.0.0.1:8000/api`
 
 ---
 
-## 📦 API Endpoints
+## 📦 API Endpoints 
 
 ### Departments
 
@@ -106,9 +106,9 @@ Addresses are always tied to a specific employee.
 |--------|-------------------------------------------------|------------------------------------|
 | GET    | `/employees/{employee_id}/addresses`           | List all addresses of an employee  |
 | POST   | `/employees/{employee_id}/addresses`           | Add a new address for the employee |
-| GET    | `/employees/{employee_id}/addresses/{id}`      | Get a single address of an employee|
-| PUT    | `/employees/{employee_id}/addresses/{id}`      | Update an employee's address       |
-| DELETE | `/employees/{employee_id}/addresses/{id}`      | Delete an employee's address       |
+| GET    | `/addresses/{id}`      | Get a single address|
+| PUT    | `/addresses/{id}`      | Update an address       |
+| DELETE | `/addresses/{id}`      | Delete an address       |
 
 ---
 
@@ -120,15 +120,15 @@ Contacts are always tied to a specific employee.
 |--------|-------------------------------------------------|------------------------------------|
 | GET    | `/employees/{employee_id}/contacts`            | List all contacts of an employee   |
 | POST   | `/employees/{employee_id}/contacts`            | Add a new contact for the employee |
-| GET    | `/employees/{employee_id}/contacts/{id}`       | Get a single contact of an employee|
-| PUT    | `/employees/{employee_id}/contacts/{id}`       | Update an employee's contact       |
-| DELETE | `/employees/{employee_id}/contacts/{id}`       | Delete an employee's contact       |
+| GET    | `/contacts/{id}`       | Get a single contact|
+| PUT    | `/contacts/{id}`       | Update a contact       |
+| DELETE | `/contacts/{id}`       | Delete a contact       |
 
 ---
 
 ## 📂 Postman Collection
 
-Import the `Company Employee Management.postman_collection.json` to test all endpoints quickly.
+Import the `Company Employee Management.postman_collection.json` to test all endpoints quickly from postman directory.
 
 ---
 

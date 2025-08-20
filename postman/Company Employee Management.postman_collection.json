@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Marketing 42\",\r\n    \"description\":\"Helo there\",\r\n    \"status\":\"inactive\"\r\n}",
+							"raw": "{\r\n    \"name\":\"HR\",\r\n    \"description\":\"Helo there\",\r\n    \"status\":\"active\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -53,7 +53,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/departments/5"
+						"url": "http://localhost:8000/api/departments/1"
 					},
 					"response": []
 				},
@@ -80,7 +80,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/departments/6"
+						"url": "http://localhost:8000/api/departments/1"
 					},
 					"response": []
 				},
@@ -104,7 +104,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/departments/4"
+						"url": "http://localhost:8000/api/departments/1"
 					},
 					"response": []
 				},
@@ -166,7 +166,7 @@
 								"type": "text"
 							}
 						],
-						"url": "http://localhost:8000/api/employees/3"
+						"url": "http://localhost:8000/api/employees/1"
 					},
 					"response": []
 				},
@@ -182,7 +182,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8000/api/employees/search?phone=9876543211",
+							"raw": "http://localhost:8000/api/employees/search?phone=9560326632",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -201,17 +201,12 @@
 								},
 								{
 									"key": "department",
-									"value": "42",
-									"disabled": true
-								},
-								{
-									"key": "address",
-									"value": "street",
+									"value": "marketing",
 									"disabled": true
 								},
 								{
 									"key": "phone",
-									"value": "9876543211"
+									"value": "9560326632"
 								}
 							]
 						}
@@ -246,7 +241,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Jane Smith\",\r\n  \"email\": \"jane@example.com\",\r\n  \"status\": \"active\",\r\n  \"department_id\": 6\r\n}",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john3@example.com\",\r\n  \"department_id\": 2,\r\n  \"status\": \"active\",\r\n  \"addresses\": [\r\n    {\r\n      \"address_line1\": \"123 Main St\",\r\n      \"address_line2\": \"Apt 4B\",\r\n      \"state\": \"NY\",\r\n      \"country\": \"USA\",\r\n      \"pin_code\": \"10001\",\r\n      \"type\": \"home\"\r\n    },\r\n    {\r\n      \"address_line1\": \"456 Work Rd\",\r\n      \"state\": \"NY\",\r\n      \"country\": \"USA\",\r\n      \"pin_code\": \"10001\",\r\n      \"type\": \"work\"\r\n    }\r\n  ],\r\n  \"contacts\": [\r\n    {\r\n      \"type\": \"personal\",\r\n      \"phone_number\": \"9560326632\"\r\n\r\n    },\r\n    {\r\n      \"phone_number\": \"9586223150\",\r\n      \"type\": \"work\"\r\n    }\r\n  ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -270,14 +265,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Jane Smith\",\r\n  \"email\": \"jane@example.com\",\r\n  \"status\": \"active\",\r\n  \"department_id\": 5\r\n}",
+							"raw": "{\r\n  \"name\": \"Jane Smith\",\r\n  \"email\": \"jane@example.com\",\r\n  \"status\": \"active\",\r\n  \"department_id\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/employees"
+						"url": "http://localhost:8000/api/employees/1"
 					},
 					"response": []
 				}
@@ -306,7 +301,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/employees/3/addresses"
+						"url": "http://localhost:8000/api/employees/1/addresses"
 					},
 					"response": []
 				},
@@ -357,12 +352,12 @@
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/addresses/10"
+						"url": "http://localhost:8000/api/addresses/1"
 					},
 					"response": []
 				},
 				{
-					"name": "Show Address Copy",
+					"name": "Delete Address",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -408,7 +403,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/employees/3/addresses"
+						"url": "http://localhost:8000/api/employees/1/addresses"
 					},
 					"response": []
 				}
@@ -430,14 +425,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"employee_id\": 1,\r\n  \"phone_number\": \"+91-9876543210\",\r\n  \"type\": \"personal\"}",
+							"raw": "{\r\n  \"phone_number\": \"+91-9876543210\",\r\n  \"type\": \"personal\"}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/employees/30/contacts"
+						"url": "http://localhost:8000/api/employees/1/contacts"
 					},
 					"response": []
 				},
@@ -461,12 +456,12 @@
 								}
 							}
 						},
-						"url": "http://localhost:8000/api/contacts/100"
+						"url": "http://localhost:8000/api/contacts/3"
 					},
 					"response": []
 				},
 				{
-					"name": "Show Address",
+					"name": "Show Contact",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
