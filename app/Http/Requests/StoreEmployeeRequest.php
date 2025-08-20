@@ -16,7 +16,17 @@ public function rules(): array
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:employees,email',
         'department_id' => 'required|exists:departments,id',
-        'status' => 'required|in:active,inactive'
+        'status' => 'required|in:active,inactive',
+
+        'addresses' => 'sometimes|array',
+        'addresses.*.address_line1' => 'required|string|max:255',
+        'addresses.*.address_line2' => 'nullable|string|max:255',
+        'addresses.*.state' => 'required|string|max:100',
+        'addresses.*.country' => 'required|string|max:100',
+        'addresses.*.pin_code' => 'required|string|max:20',
+
+        'contacts' => 'sometimes|array',
+        'contacts.*.phone_number' => 'required|string|max:15'
     ];
 }
 

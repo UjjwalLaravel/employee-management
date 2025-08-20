@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Services\EmployeeSearchService;
 
 class EmployeesController extends Controller
 {
+    protected $searchService;
+
+    public function __construct(EmployeeSearchService $searchService)
+    {
+        $this->searchService = $searchService;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -34,7 +41,20 @@ class EmployeesController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        $employee = Employee::create($request->validated());
+        $data = $request->validated();
+        $employee = Employee::create($data);
+        
+        if (!empty($data['addresses'])) {
+            foreach ($data['addresses'] as $addr) {
+                $employee->addresses()->create($addr);
+            }
+        }
+
+        if (!empty($data['contacts'])) {
+            foreach ($data['contacts'] as $contact) {
+                $employee->contacts()->create($contact);
+            }
+        }
 
         return response()->json([
             'success' => true,
@@ -84,16 +104,14 @@ class EmployeesController extends Controller
         ]);
     }
 
-    public function search(string $keyword)
+    public function search(Request $request)
     {
-        $employees = Employee::with('department')
-            ->where('name', 'like', "%{$keyword}%")
-            ->orWhere('email', 'like', "%{$keyword}%")
-            ->paginate(10);
+        $employees = $this->searchService->search($request->all());
+
         if(count($employees) == 0){
             return response()->json([
                 'success' => true,
-                'message' => "Results not found for this keyword - '{$keyword}'",
+                'message' => "No employee exists for your searched parameters",
                 'data' => []
             ]);    
         }

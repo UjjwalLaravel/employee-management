@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->expectsJson()) {
                 return response()->json(
                     [
+                        'success' => false,
                         'message' => 'Resource not found',
                     ],
                     404,

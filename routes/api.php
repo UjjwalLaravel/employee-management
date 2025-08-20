@@ -13,12 +13,12 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('departments', DepartmentsController::class);
 
-Route::apiResource('employees', EmployeesController::class);
-Route::get('employees/search/{keyword}', [EmployeesController::class, 'search']);
+Route::get('employees/search', [EmployeesController::class, 'search']);
 Route::get('/employees/{employee}/addresses', [AddressesController::class, 'index']);
 Route::post('/employees/{employee}/addresses', [AddressesController::class, 'store']);
 Route::get('/employees/{employee}/contacts', [ContactsController::class, 'index']);
 Route::post('/employees/{employee}/contacts', [ContactsController::class, 'store']);
+Route::apiResource('employees', EmployeesController::class);
 
 Route::get('/addresses/{address}', [AddressesController::class, 'show']);
 Route::put('/addresses/{address}', [AddressesController::class, 'update']);
