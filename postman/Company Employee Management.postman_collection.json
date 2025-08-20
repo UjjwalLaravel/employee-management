@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8b57103f-b608-46b1-939f-083bbef5249a",
+		"_postman_id": "68dd4116-841b-48bf-9e8f-e2f15bded35c",
 		"name": "Company Employee Management",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "2942394"
@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"HR\",\r\n    \"description\":\"Helo there\",\r\n    \"status\":\"active\"\r\n}",
+							"raw": "{\r\n    \"name\":\"HR\",\r\n    \"status\":\"active\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -544,7 +544,8 @@
 			"name": "New Request",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": ""
 			},
 			"response": []
 		},
@@ -552,7 +553,8 @@
 			"name": "New Request",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": ""
 			},
 			"response": []
 		}

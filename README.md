@@ -18,6 +18,15 @@ A RESTful API built for managing employees, departments, addresses, and contacts
 
 ---
 
+## Requirements
+
+- PHP >= 8.1 (Laravel 12)
+- Composer
+- MySQL
+- Git
+- Postman (optional, for testing APIs)
+
+---
 ## 💻 Setup Instructions
 
 1. **Clone the repository**
@@ -35,9 +44,16 @@ A RESTful API built for managing employees, departments, addresses, and contacts
 
 3. **Copy `.env` file**
 
+	*Linux / macOS*
     ```bash
     cp .env.example .env
     ```
+	*Windows CMD*
+    ```bash
+    copy .env.example .env
+   ```
+
+   
 
 4. **Configure database** in `.env`
 
